@@ -2,6 +2,7 @@
 
 import { createClient } from "genlayer-js";
 import { studionet } from "genlayer-js/chains";
+// @ts-ignore
 import { createWalletClient, custom, type WalletClient } from "viem";
 
 // GenLayer Network Configuration (from environment variables with fallbacks)
@@ -300,6 +301,7 @@ export function createMetaMaskWalletClient(): WalletClient | null {
 export function createGenLayerClient(address?: string) {
   const config: any = {
     chain: studionet,
+    endpoint: getStudioUrl(),
   };
 
   if (address) {
@@ -313,6 +315,7 @@ export function createGenLayerClient(address?: string) {
     // Return client without account on error
     return createClient({
       chain: studionet,
+      endpoint: getStudioUrl(),
     });
   }
 }

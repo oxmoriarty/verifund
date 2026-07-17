@@ -11,7 +11,7 @@ import React from 'react';
 import Image from 'next/image';
 
 export type LogoVariant = 'full' | 'mark' | 'wordmark';
-export type LogoSize = 'sm' | 'md' | 'lg';
+export type LogoSize = 'sm' | 'md' | 'lg' | 'xl';
 export type LogoTheme = 'light' | 'dark';
 
 interface LogoProps {
@@ -25,6 +25,7 @@ const sizeMap = {
   sm: { width: 20, height: 20, text: 'text-base' },
   md: { width: 24, height: 24, text: 'text-xl' },
   lg: { width: 32, height: 32, text: 'text-2xl' },
+  xl: { width: 40, height: 40, text: 'text-3xl' },
 };
 
 export function Logo({

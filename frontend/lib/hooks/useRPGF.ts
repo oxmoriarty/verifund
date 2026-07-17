@@ -86,7 +86,7 @@ export function useSubmitProject() {
       const receipt = await client.waitForTransactionReceipt({
         hash: txHash,
         status: TransactionStatus.ACCEPTED,
-        retries: 24,
+        retries: 120,
         interval: 5000,
       });
 

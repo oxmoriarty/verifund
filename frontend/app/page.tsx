@@ -4,7 +4,7 @@ import { useProjects } from "@/lib/hooks/useRPGF";
 import { ProjectForm } from "@/components/ProjectForm";
 import { ProjectCard } from "@/components/ProjectCard";
 import { Navbar } from "@/components/Navbar";
-import { Loader2, Zap } from "lucide-react";
+import { Loader2, Zap, Sparkles } from "lucide-react";
 
 export default function Home() {
   const { data: projects, isLoading, error } = useProjects();
@@ -13,13 +13,17 @@ export default function Home() {
     <div className="min-h-screen bg-[#0A0A0A] relative selection:bg-white/20 selection:text-white">
       <Navbar />
 
-      <main className="pt-32 pb-16 px-6 md:px-8 max-w-6xl mx-auto grid gap-12">
-        <header className="flex flex-col gap-4">
-          <h1 className="text-4xl md:text-5xl font-semibold tracking-tight">
-            Retroactive Funding
+      <main className="pt-32 pb-16 px-6 md:px-8 max-w-6xl mx-auto grid gap-16">
+        <header className="flex flex-col gap-6 py-10 items-start text-left md:items-center md:text-center">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold tracking-wide border border-emerald-500/20">
+            <Sparkles className="w-3.5 h-3.5" />
+            GenLayer Intelligent Contracts
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-br from-white via-white to-white/30 leading-[1.1]">
+            Retroactive <br className="hidden md:block" /> Public Goods Funding
           </h1>
-          <p className="text-white/60 font-medium max-w-xl leading-relaxed">
-            Evaluate and fund impactful public goods on the GenLayer protocol.
+          <p className="text-white/60 text-lg font-medium max-w-2xl leading-relaxed">
+            Verifond autonomously evaluates and retroactively funds the most impactful projects building the decentralized web.
           </p>
         </header>
 

@@ -11,10 +11,6 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-6">
             <Logo variant="mark" size="md" />
-            <div className="hidden md:flex items-center gap-2">
-              <Activity className="w-3.5 h-3.5 text-white/40" />
-              <span className="text-xs font-medium text-white/60">Live</span>
-            </div>
           </div>
           
           <div className="flex items-center gap-4">

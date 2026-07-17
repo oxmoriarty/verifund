@@ -6,7 +6,7 @@ import { Providers } from "./providers";
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Verifund Protocol",
+  title: "Verifond",
   description: "Autonomous Retroactive Public Goods Funding powered by GenLayer Intelligent Contracts.",
   manifest: "/site.webmanifest",
   icons: {

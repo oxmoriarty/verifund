@@ -22,10 +22,10 @@ interface LogoProps {
 }
 
 const sizeMap = {
-  sm: { width: 20, height: 20, text: 'text-base' },
-  md: { width: 24, height: 24, text: 'text-xl' },
-  lg: { width: 32, height: 32, text: 'text-2xl' },
-  xl: { width: 40, height: 40, text: 'text-3xl' },
+  sm: { width: 200, height: 200, text: 'text-base' },
+  md: { width: 240, height: 240, text: 'text-xl' },
+  lg: { width: 320, height: 320, text: 'text-2xl' },
+  xl: { width: 400, height: 400, text: 'text-3xl' },
 };
 
 export function Logo({
@@ -37,11 +37,11 @@ export function Logo({
   const colorClass = theme === 'dark' ? 'text-foreground' : 'text-background';
   const { width, height, text: textSize } = sizeMap[size];
 
-  // Verifund Mark (Loaded from public/verifundlogo.svg)
+  // Verifond Mark (Loaded from public/verifundlogo.svg)
   const StrongMark = () => (
     <Image 
       src="/verifundlogo.svg" 
-      alt="Verifund Logo" 
+      alt="Verifond Logo" 
       width={width} 
       height={height}
       className={`object-contain ${className}`}
@@ -53,7 +53,7 @@ export function Logo({
     <span
       className={`${textSize} font-bold ${colorClass} font-[family-name:var(--font-display)] transition-colors tracking-tight`}
     >
-      Verifund
+      Verifond
     </span>
   );
 

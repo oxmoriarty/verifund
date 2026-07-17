@@ -1,14 +1,14 @@
 /**
- * GenLayer Logo Component
- * Per Brand Guidelines 2025
+ * Verifund Logo Component
  *
  * Variants:
- * - "full": Strong Mark + Wordmark (for desktop/larger spaces)
- * - "mark": Strong Mark only (for mobile/compact spaces)
- * - "wordmark": Wordmark only (for specific cases)
+ * - "full": Logo Mark + Wordmark
+ * - "mark": Logo Mark only
+ * - "wordmark": Wordmark only
  */
 
 import React from 'react';
+import Image from 'next/image';
 
 export type LogoVariant = 'full' | 'mark' | 'wordmark';
 export type LogoSize = 'sm' | 'md' | 'lg';
@@ -22,9 +22,9 @@ interface LogoProps {
 }
 
 const sizeMap = {
-  sm: { mark: 'w-5 h-5', text: 'text-base' },
-  md: { mark: 'w-6 h-6', text: 'text-xl' },
-  lg: { mark: 'w-8 h-8', text: 'text-2xl' },
+  sm: { width: 20, height: 20, text: 'text-base' },
+  md: { width: 24, height: 24, text: 'text-xl' },
+  lg: { width: 32, height: 32, text: 'text-2xl' },
 };
 
 export function Logo({
@@ -34,30 +34,25 @@ export function Logo({
   className = '',
 }: LogoProps) {
   const colorClass = theme === 'dark' ? 'text-foreground' : 'text-background';
-  const { mark: markSize, text: textSize } = sizeMap[size];
+  const { width, height, text: textSize } = sizeMap[size];
 
-  // GenLayer Strong Mark (Triangle/Hands symbol)
+  // Verifund Mark (Loaded from public/verifundlogo.svg)
   const StrongMark = () => (
-    <svg
-      className={`${markSize} ${colorClass} transition-colors`}
-      viewBox="0 0 97.76 91.93"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="GenLayer Logo"
-    >
-      <path
-        fill="currentColor"
-        d="M44.26 32.35L27.72 67.12L43.29 74.9L0 91.93L44.26 0L44.26 32.35ZM53.5 32.35L70.04 67.12L54.47 74.9L97.76 91.93L53.5 0L53.5 32.35ZM48.64 43.78L58.33 62.94L48.64 67.69L39.47 62.92L48.64 43.78Z"
-      />
-    </svg>
+    <Image 
+      src="/verifundlogo.svg" 
+      alt="Verifund Logo" 
+      width={width} 
+      height={height}
+      className={`object-contain ${className}`}
+    />
   );
 
-  // Wordmark (using Space Grotesk from layout)
+  // Wordmark
   const Wordmark = () => (
     <span
-      className={`${textSize} font-bold ${colorClass} font-[family-name:var(--font-display)] transition-colors`}
-      style={{ letterSpacing: '-0.02em' }}
+      className={`${textSize} font-bold ${colorClass} font-[family-name:var(--font-display)] transition-colors tracking-tight`}
     >
-      GenLayer
+      Verifund
     </span>
   );
 

@@ -13,7 +13,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#0A0A0A] relative selection:bg-white/20 selection:text-white">
       <Navbar />
 
-      <main className="pt-32 pb-16 px-6 md:px-8 max-w-6xl mx-auto grid gap-16">
+      <main className="pt-[300px] pb-16 px-6 md:px-8 max-w-6xl mx-auto grid gap-16">
         <header className="flex flex-col gap-6 py-10 items-start text-left md:items-center md:text-center">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-semibold tracking-wide border border-emerald-500/20">
             <Sparkles className="w-3.5 h-3.5" />

@@ -14,35 +14,14 @@ export interface Project {
   status: "PENDING" | "ACCEPTED" | "FINALIZED";
 }
 
-// Fallback placeholder address
-const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || "0x0000000000000000000000000000000000000000";
-
-// Mock Data for Development
-const MOCK_PROJECTS: Project[] = [
-  {
-    url: "https://github.com/ethereum/solidity",
-    summary: JSON.stringify({ score: 9.8, summary: "Core infrastructure for Ethereum. Critical public good." }),
-    status: "FINALIZED"
-  },
-  {
-    url: "https://optimism.io",
-    summary: JSON.stringify({ score: 9.5, summary: "L2 scaling solution with deep commitment to retroactive funding." }),
-    status: "FINALIZED"
-  },
-  {
-    url: "https://ethglobal.com",
-    summary: JSON.stringify({ score: 8.9, summary: "Fostering developer ecosystems globally via hackathons." }),
-    status: "FINALIZED"
-  }
-];
+const CONTRACT_ADDRESS = process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || "";
 
 export function useProjects() {
   return useQuery<Project[], Error>({
     queryKey: ["projects"],
     queryFn: async () => {
-      // Return realistic mock data when no real contract is deployed
-      if (CONTRACT_ADDRESS === "0x0000000000000000000000000000000000000000") {
-        return Promise.resolve(MOCK_PROJECTS);
+      if (!CONTRACT_ADDRESS) {
+        throw new Error("Contract address is not configured");
       }
 
       // Live integration logic
@@ -61,7 +40,7 @@ export function useProjects() {
         }));
       } catch (err) {
         console.error("Error fetching projects from GenLayer:", err);
-        return MOCK_PROJECTS; // fallback to mock data on error
+        throw err;
       }
     },
     refetchOnWindowFocus: true,
@@ -85,25 +64,13 @@ export function useSubmitProject() {
       if (!address) {
         throw new Error("Wallet not connected. Please connect your wallet to submit a project.");
       }
+      
+      if (!CONTRACT_ADDRESS) {
+        throw new Error("Contract address is not configured.");
+      }
 
       setIsSubmitting(true);
       setTxStatus("PENDING");
-
-      if (CONTRACT_ADDRESS === "0x0000000000000000000000000000000000000000") {
-        // Mock submission delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        setTxStatus("ACCEPTED");
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        setTxStatus("FINALIZED");
-        
-        // Add to local mock data
-        MOCK_PROJECTS.unshift({
-          url: projectUrl,
-          summary: JSON.stringify({ score: 8.5, summary: `Newly submitted project evaluation for ${description}` }),
-          status: "FINALIZED"
-        });
-        return { hash: "0xmocktxhash" };
-      }
 
       const client = await getClient();
       

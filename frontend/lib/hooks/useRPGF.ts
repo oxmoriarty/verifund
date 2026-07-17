@@ -1,5 +1,6 @@
 "use client";
 
+import { TransactionStatus } from "genlayer-js/types";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { getClient } from "../genlayer/client";
@@ -117,7 +118,7 @@ export function useSubmitProject() {
 
       const receipt = await client.waitForTransactionReceipt({
         hash: txHash,
-        status: "ACCEPTED" as any,
+        status: TransactionStatus.ACCEPTED,
         retries: 24,
         interval: 5000,
       });

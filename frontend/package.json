@@ -1,7 +1,7 @@
 {
-  "name": "genlayer-football-betting",
+  "name": "verifund-frontend",
   "version": "1.0.0",
-  "description": "GenLayer Football Betting - AI-powered prediction betting on GenLayer blockchain.",
+  "description": "Verifund - Autonomous RPGF built on GenLayer.",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",

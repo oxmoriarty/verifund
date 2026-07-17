@@ -1,84 +1,38 @@
-# GenLayer Football Market
+# Verifund Frontend
 
-Next.js frontend for GenLayer Football Market - AI-powered football match predictions on GenLayer blockchain.
-
-## Setup
-
-1. Install dependencies:
-
-**Using bun:**
-```bash
-bun install
-```
-
-**Using npm:**
-```bash
-npm install
-```
-
-2. Create `.env` file:
-```bash
-cp .env.example .env
-```
-
-3. Configure environment variables:
-   - `NEXT_PUBLIC_CONTRACT_ADDRESS` - GenLayer Football Betting contract address
-   - `NEXT_PUBLIC_STUDIO_URL` - GenLayer Studio URL (default: https://studio.genlayer.com/api)
-
-## Development
-
-**Using bun:**
-```bash
-bun dev
-```
-
-**Using npm:**
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
-## Build
-
-**Using bun:**
-```bash
-bun run build
-bun start
-```
-
-**Using npm:**
-```bash
-npm run build
-npm start
-```
+The modern, responsive Next.js frontend for Verifund - an autonomous Retroactive Public Goods Funding (RPGF) application built on GenLayer Intelligent Contracts.
 
 ## Tech Stack
-
-- **Next.js 15** - React framework with App Router
-- **TypeScript** - Type safety
-- **Tailwind CSS v4** - Styling with custom glass-morphism theme
-- **genlayer-js** - GenLayer blockchain SDK
-- **TanStack Query (React Query)** - Data fetching and caching
-- **Radix UI** - Accessible component primitives
-- **shadcn/ui** - Pre-built UI components
-
-## Wallet Management
-
-The app uses GenLayer's account system:
-- **Create Account**: Generate a new private key
-- **Import Account**: Import existing private key
-- **Export Account**: Export your private key (secured)
-- **Disconnect**: Clear stored account data
-
-Accounts are stored in browser's localStorage for development convenience.
+- **Framework**: Next.js (App Router)
+- **Styling**: Tailwind CSS, PostCSS
+- **State Management**: React Query (`@tanstack/react-query`)
+- **Web3 Integration**: `genlayer-js`, MetaMask
 
 ## Features
+- **Project Submission**: Submit public goods URLs to be intelligently evaluated and scored by the GenLayer AI consensus.
+- **Project Directory**: Browse all evaluated projects with their Alpha/Beta/Gamma classification.
+- **Deep Integration**: Seamlessly connect your wallet, copy your EOA address, and manage real-time evaluation states.
 
-- **Create Bets**: Create football match predictions with team names, game date, and predicted winner (Team 1, Team 2, or Draw)
-- **View Bets**: Real-time bet table with match details, predictions, status, and owners
-- **Resolve Bets**: Bet owners can resolve matches using GenLayer's AI to verify actual results
-- **Leaderboard**: Track top players by points earned from correct predictions
-- **Player Stats**: View your points and ranking in the community
-- **Glass-morphism UI**: Premium dark theme with OKLCH colors, backdrop blur effects, and smooth animations
-- **Real-time Updates**: Automatic data fetching with 3-second polling intervals via TanStack Query
+## Getting Started
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+2. Configure environment variables in `.env.local` or `.env`:
+   ```bash
+   NEXT_PUBLIC_GENLAYER_RPC_URL=https://rpc-bradbury.genlayer.com
+   NEXT_PUBLIC_GENLAYER_CHAIN_ID=4221
+   NEXT_PUBLIC_GENLAYER_CHAIN_NAME="GenLayer Testnet Bradbury"
+   NEXT_PUBLIC_GENLAYER_SYMBOL=GEN
+   NEXT_PUBLIC_CONTRACT_ADDRESS="your_deployed_rpgf_address_here"
+   ```
+   *Note: If `NEXT_PUBLIC_CONTRACT_ADDRESS` is set to `0x0000000000000000000000000000000000000000`, the app will load with mock data.*
+
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) with your browser.
